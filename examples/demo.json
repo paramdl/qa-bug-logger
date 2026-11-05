@@ -1,0 +1,11 @@
+{
+  "project": "Demo Shop",
+  "backend": "csv",
+  "csv_folder": "bug-logs",
+  "evidence": "local",
+  "evidence_folder": "evidence",
+  "retest_scripts": {
+    "BUG-001": "checks/bug_001_negative_price.py",
+    "BUG-002": "checks/bug_002_tax_rounding.py"
+  }
+}

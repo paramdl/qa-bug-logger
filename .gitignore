@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+bug-logs/
+evidence/
+client_secrets.json
+.google_token.json
+*.pickle
+.env

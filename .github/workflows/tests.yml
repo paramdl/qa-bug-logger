@@ -1,0 +1,27 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.13']
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install -r requirements-dev.txt
+      - run: pytest -q
+      - name: Demo retest
+        run: |
+          python -m qa_bug_logger log --config examples/demo.json --bug-id BUG-001 --module Pricing --severity High --priority P2 --title "Negative price" --description d --steps s --expected e --actual a
+          python -m qa_bug_logger log --config examples/demo.json --bug-id BUG-002 --module Cart --severity Medium --priority P3 --title "Tax rounding" --description d --steps s --expected e --actual a
+          python -m qa_bug_logger retest --config examples/demo.json

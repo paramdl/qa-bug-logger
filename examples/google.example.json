@@ -1,0 +1,14 @@
+{
+  "project": "My Product",
+  "backend": "sheets",
+  "spreadsheet_id": "<your-google-sheet-id>",
+  "evidence": "drive",
+  "drive_parent_folder_id": "<your-drive-folder-id>",
+  "share_public": false,
+  "token_file": ".google_token.json",
+  "client_secrets": "client_secrets.json",
+  "env": { "base_url": "https://staging.example.com" },
+  "retest_scripts": {
+    "BUG-001": "checks/bug_001_negative_price.py"
+  }
+}
